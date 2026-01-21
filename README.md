@@ -1,6 +1,7 @@
 # Portfolio Website
 
 This is a modern, responsive portfolio website built with HTML, CSS (Tailwind), and JavaScript.
+Click this link to see the portfolio LIVE: https://zeekay47.github.io/portfolio/
 
 ## Features
 - Responsive design for all screen sizes
@@ -17,3 +18,4 @@ This is a modern, responsive portfolio website built with HTML, CSS (Tailwind), 
 - Vanilla JavaScript
 - Font Awesome icons
   
+
