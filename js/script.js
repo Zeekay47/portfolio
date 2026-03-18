@@ -36,24 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Highlight active navigation link
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-links a');
-        
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 150) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${current}`) {
-                item.classList.add('active');
-            }
-        });
+        updateActiveNavLink();
     });
     
     // Scroll animations
@@ -129,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add active class to nav links based on scroll position
+    // Function to update active nav link based on scroll position
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-links a');
