@@ -89,3 +89,161 @@
 .delay-4 {
     transition-delay: 0.8s;
 }
+/* Add these animations to your existing animations.css */
+
+/* New animations */
+@keyframes rotateIn {
+    from {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    70% {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes flipIn {
+    from {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: perspective(400px) rotateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animation classes */
+.rotate-in {
+    animation: rotateIn 1s ease forwards;
+}
+
+.bounce-in {
+    animation: bounceIn 1s ease forwards;
+}
+
+.flip-in {
+    animation: flipIn 1s ease forwards;
+}
+
+/* Stagger animations for certification cards */
+.certification-card:nth-child(1) {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.certification-card:nth-child(2) {
+    animation: fadeIn 0.5s ease 0.2s forwards;
+    opacity: 0;
+}
+
+.certification-card:nth-child(3) {
+    animation: fadeIn 0.5s ease 0.4s forwards;
+    opacity: 0;
+}
+
+/* Hover animations */
+.project-card:hover .project-tech span {
+    animation: bounceIn 0.5s ease;
+}
+
+.skill-card:hover .skill-icon {
+    animation: rotateIn 0.5s ease;
+}
+
+.certification-card:hover .cert-icon {
+    animation: bounceIn 0.5s ease;
+}
+
+/* Loading animation for skill bars */
+@keyframes growWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+.skill-level {
+    animation: growWidth 1.5s ease-out forwards;
+}
+
+/* Pulse animation for CTA buttons */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.btn.primary:hover {
+    animation: pulse 1s infinite;
+}
+
+/* Floating animation for social icons */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.social-icon:hover {
+    animation: float 2s ease infinite;
+}
+
+/* Shimmer effect for section titles */
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.section-title span {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 2s infinite;
+}
