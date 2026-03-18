@@ -15,38 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', 'dark');
     }
     
-    // Toggle dark/light mode with animation
+    // Toggle dark/light mode with smooth transition
     darkModeToggle.addEventListener('click', function() {
-        // Add transition effect
-        body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+        const isDark = body.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
         
-        if (body.getAttribute('data-theme') === 'dark') {
-            body.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            
-            // Update toggle icon animation
-            this.style.transform = 'rotate(180deg)';
-            setTimeout(() => {
-                this.style.transform = 'rotate(0deg)';
-            }, 200);
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-            
-            // Update toggle icon animation
-            this.style.transform = 'rotate(180deg)';
-            setTimeout(() => {
-                this.style.transform = 'rotate(0deg)';
-            }, 200);
-        }
+        // Add rotation animation
+        this.style.transform = 'rotate(180deg)';
         
-        // Update navbar background based on theme
-        const navbar = document.getElementById('navbar');
-        if (body.getAttribute('data-theme') === 'dark') {
-            navbar.style.background = 'rgba(30, 30, 30, 0.95)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        }
+        // Change theme
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Reset rotation
+        setTimeout(() => {
+            this.style.transform = 'rotate(0deg)';
+        }, 200);
     });
     
     // Listen for system theme changes
@@ -65,9 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
             darkModeToggle.click();
         }
     });
-    
-    // Add CSS transition to body when theme changes
-    body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
     
     console.log('Dark mode initialized');
 });
