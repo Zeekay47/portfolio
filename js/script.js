@@ -20,11 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         const navbar = document.getElementById('navbar');
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.9)';
-            navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            navbar.classList.remove('scrolled');
         }
         
         // Back to top button
@@ -34,9 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             backToTop.classList.remove('active');
         }
-        
-        // Highlight active navigation link
-        updateActiveNavLink();
     });
     
     // Scroll animations
