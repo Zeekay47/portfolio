@@ -1,4 +1,3 @@
-/* Base Styles */
 :root {
     --primary-color: #0a66c2;
     --secondary-color: #2ecc71;
@@ -20,10 +19,9 @@
     --success-color: #2ecc71;
     --warning-color: #f39c12;
     --danger-color: #e74c3c;
-    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --footer-bg: #2c3e50;  /* NEW: consistent dark footer */
 }
 
-/* Dark Mode Variables */
 [data-theme="dark"] {
     --primary-color: #0a66c2;
     --secondary-color: #2ecc71;
@@ -44,6 +42,7 @@
     --success-color: #2ecc71;
     --warning-color: #f39c12;
     --danger-color: #e74c3c;
+    --footer-bg: #1a1a1a;  /* NEW: dark footer in dark mode */
 }
 
 * {
