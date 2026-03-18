@@ -4,98 +4,89 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelector('.nav-links');
     const navLinksItems = document.querySelectorAll('.nav-links a');
     
-    hamburger.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
-    });
+    if (hamburger) {
+        hamburger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+        });
+    }
     
     // Close mobile menu when clicking on a link
     navLinksItems.forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            if (hamburger) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
         });
     });
     
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+        if (hamburger && navLinks && 
+            !hamburger.contains(e.target) && 
+            !navLinks.contains(e.target) && 
+            navLinks.classList.contains('active')) {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
     });
 
-    // Sticky navbar on scroll with animation
+    // Throttled scroll handler for performance
+    let ticking = false;
+    
     window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('navbar');
-        const backToTop = document.querySelector('.back-to-top');
-        
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.backdropFilter = 'blur(10px)';
-            navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.backdropFilter = 'blur(10px)';
-            navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-        }
-        
-        // Back to top button visibility
-        if (window.scrollY > 300) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
-        }
-        
-        // Active navigation link highlighting
-        const sections = document.querySelectorAll('section');
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinksItems.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-    
-    // Scroll animations
-    const animateElements = document.querySelectorAll('[data-animate]');
-    
-    function checkScroll() {
-        animateElements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                const navbar = document.getElementById('navbar');
+                const backToTop = document.querySelector('.back-to-top');
+                
+                // Update navbar on scroll
+                if (navbar) {
+                    if (window.scrollY > 100) {
+                        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
+                    } else {
+                        navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                    }
+                }
+                
+                // Back to top button visibility
+                if (backToTop) {
+                    if (window.scrollY > 300) {
+                        backToTop.classList.add('active');
+                    } else {
+                        backToTop.classList.remove('active');
+                    }
+                }
+                
+                // Active navigation link highlighting
+                const sections = document.querySelectorAll('section');
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinksItems.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                ticking = false;
+            });
             
-            if (elementPosition < windowHeight - 100) {
-                element.classList.add('animate');
-            }
-        });
-    }
-    
-    // Initial check for animations
-    checkScroll();
-    
-    // Check on scroll with throttling for performance
-    let scrollTimeout;
-    window.addEventListener('scroll', function() {
-        if (scrollTimeout) {
-            window.cancelAnimationFrame(scrollTimeout);
+            ticking = true;
         }
-        scrollTimeout = window.requestAnimationFrame(function() {
-            checkScroll();
-        });
     });
     
     // Smooth scrolling for anchor links
@@ -109,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                const navHeight = document.getElementById('navbar').offsetHeight;
+                const navHeight = document.getElementById('navbar')?.offsetHeight || 0;
                 const targetPosition = targetElement.offsetTop - navHeight;
                 
                 window.scrollTo({
@@ -120,34 +111,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Contact form with validation and submission
+    // Contact form with validation
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Get form values
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
+            const name = document.getElementById('name')?.value.trim();
+            const email = document.getElementById('email')?.value.trim();
+            const message = document.getElementById('message')?.value.trim();
             
-            // Basic validation
+            // Simple validation
             if (!name || !email || !message) {
-                showNotification('Please fill in all fields', 'error');
+                alert('Please fill in all fields');
                 return;
             }
             
             if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
+                alert('Please enter a valid email address');
                 return;
             }
             
-            // Here you would typically send the form data to a server
-            // For demonstration, we'll log it and show success message
-            console.log('Form submitted:', { name, email, message });
-            
             // Show success message
-            showNotification('Thank you for your message! I will get back to you soon.', 'success');
+            alert('Thank you for your message! I will get back to you soon.');
             
             // Reset form
             contactForm.reset();
@@ -160,71 +147,18 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
     
-    // Notification system
-    function showNotification(message, type) {
-        // Remove existing notification
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
-                <span>${message}</span>
-            </div>
-        `;
-        
-        // Add to body
-        document.body.appendChild(notification);
-        
-        // Show notification
-        setTimeout(() => notification.classList.add('show'), 10);
-        
-        // Remove after 3 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-    
-    // Add active class to navigation links on scroll
-    function updateActiveNavLink() {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
+    // Lazy load images for better performance
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
             }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', updateActiveNavLink);
-    updateActiveNavLink(); // Call once on page load
-    
-    // Add loading animation for images
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('load', function() {
-            this.classList.add('loaded');
         });
     });
     
-    // Initialize tooltips or other UI elements if needed
-    console.log('Portfolio website loaded successfully!');
+    images.forEach(img => imageObserver.observe(img));
 });
