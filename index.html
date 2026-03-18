@@ -25,9 +25,11 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#resume">Resume</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#resume">Resume</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -75,16 +77,20 @@
                     
                     <div class="about-info">
                         <div class="info-item">
-                            <p><span>Email:</span> zahid.khan.evil@gmail.com</p>
+                            <i class="fas fa-envelope"></i>
+                            <p><span>Email</span> zahid.khan.evil@gmail.com</p>
                         </div>
                         <div class="info-item">
-                            <p><span>Location:</span> Kohat, Pakistan</p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p><span>Location</span> Kohat, Pakistan</p>
                         </div>
                         <div class="info-item">
-                            <p><span>Open to:</span> Remote & Onsite Opportunities</p>
+                            <i class="fas fa-briefcase"></i>
+                            <p><span>Open to</span> Remote & Onsite</p>
                         </div>
                         <div class="info-item">
-                            <p><span>CGPA:</span> 3.8/4.0</p>
+                            <i class="fas fa-graduation-cap"></i>
+                            <p><span>CGPA</span> 3.8/4.0</p>
                         </div>
                     </div>
                 </div>
@@ -195,6 +201,40 @@
                         <div class="skill-level mvc"></div>
                     </div>
                 </div>
+
+                <!-- New skills -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Intermediate</p>
+                    <div class="skill-bar">
+                        <div class="skill-level digital-marketing"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3>Git</h3>
+                    <p>Advanced</p>
+                    <div class="skill-bar">
+                        <div class="skill-level git"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React</h3>
+                    <p>Intermediate</p>
+                    <div class="skill-bar">
+                        <div class="skill-level react"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -287,16 +327,18 @@
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="section">
+    <!-- Experience Section (moved from Resume) -->
+    <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">My <span>Resume</span></h2>
-            <div class="resume-content">
-                <div class="resume-preview">
-                    <h3>Experience</h3>
-                    <div class="resume-item">
-                        <h4>Web Developer (Internship)</h4>
-                        <h5>RZ Technologies | Nov 2025 - Present</h5>
+            <h2 class="section-title">Professional <span>Experience</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Nov 2025 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Web Developer (Internship)</h3>
+                        <h4>RZ Technologies</h4>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Kohat, Pakistan (On-site)</p>
                         <ul>
                             <li>Developing and maintaining dynamic web applications using Core PHP, MySQL, and frontend technologies (HTML, CSS, JavaScript), contributing to live projects under senior developer mentorship.</li>
                             <li>Currently advancing skills in the Laravel framework to build scalable, modern web solutions following MVC architecture and industry best practices.</li>
@@ -304,10 +346,15 @@
                             <li>Gaining hands-on experience in the full software development lifecycle—from requirement analysis to deployment—in a professional Agile environment.</li>
                         </ul>
                     </div>
-                    
-                    <div class="resume-item">
-                        <h4>Information Technology (IT) Instructor</h4>
-                        <h5>Faran Educational Complex, Kohat | Feb 2023 - Jul 2025</h5>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Feb 2023 - Jul 2025</div>
+                    <div class="timeline-content">
+                        <h3>Information Technology (IT) Instructor</h3>
+                        <h4>Faran Educational Complex, Kohat</h4>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Kohat, Pakistan (On-site)</p>
                         <ul>
                             <li>Taught Python, Web Development, Database Systems (MySQL), and ICT (Information & Communication Technology), focusing on cloud-based applications and deployment.</li>
                             <li>Guided students in developing and deploying web applications using cloud platforms.</li>
@@ -315,33 +362,46 @@
                             <li>Assisted in database administration and cloud-based data management solutions.</li>
                         </ul>
                     </div>
-                    
-                    <h3>Education</h3>
-                    <div class="resume-item">
-                        <h4>Bachelor of Science (Honours) in Computer Science</h4>
-                        <h5>Preston University | Oct 2020 - Oct 2024</h5>
-                        <ul>
-                            <li>Graduated with 3.8 CGPA out of 4.0</li>
-                            <li>President of Sci-Tech Society - organized tech workshops and seminars</li>
-                            <li>Winner of Quiz and Programming Competition 2023</li>
-                            <li>Volleyball Player</li>
-                            <li>Excelled in coursework with a strong foundation in programming, data science, ML, and cloud computing.</li>
-                            <li>Participated in workshops, hackathons, and research projects, enhancing problem-solving skills.</li>
-                            <li>Active in tech clubs and competitions, demonstrating leadership and teamwork.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="resume-download">
-                    <p>Download my complete resume to learn more about my experience and skills.</p>
-                    <a href="assets/resume.pdf" download class="btn primary">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section (New) -->
+    <!-- Education Section (new) -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">My <span>Education</span></h2>
+            <div class="education-card">
+                <div class="education-header">
+                    <div class="edu-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="edu-title">
+                        <h3>Preston University</h3>
+                        <h4>Bachelor of Science (Honours) in Computer Science</h4>
+                        <p class="edu-date">Oct 2020 - Oct 2024</p>
+                        <p class="edu-grade">CGPA: 3.8/4.0</p>
+                    </div>
+                </div>
+                <div class="education-details">
+                    <h5>Activities and Achievements</h5>
+                    <ul>
+                        <li>President of Sci-Tech Society - organized tech workshops and seminars</li>
+                        <li>Winner of Quiz and Programming Competition 2023</li>
+                        <li>Volleyball Player</li>
+                    </ul>
+                    <h5>Key Highlights</h5>
+                    <ul>
+                        <li>Excelled in coursework with a strong foundation in programming, data science, ML, and cloud computing.</li>
+                        <li>Participated in workshops, hackathons, and research projects, enhancing problem-solving skills.</li>
+                        <li>Active in tech clubs and competitions, demonstrating leadership and teamwork.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
     <section id="certifications" class="section">
         <div class="container">
             <h2 class="section-title">Licenses & <span>Certifications</span></h2>
@@ -355,6 +415,19 @@
                     <p class="cert-date">Issued Feb 2026</p>
                     <p class="cert-desc">Completed Python for Data Science course covering data analysis, visualization, and machine learning techniques using Python libraries like Pandas, NumPy, and scikit-learn. Gained hands-on experience with real-world data science projects.</p>
                     <p class="cert-id">Credential ID: 272f49bb8fcb493b93720267e244d33c</p>
+                    <a href="#" class="btn secondary small">Show Credential</a>
+                </div>
+
+                <!-- New KPITB Digital Marketing Certificate -->
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <h4>KPITB (Khyber Pakhtunkhwa Information Technology Board)</h4>
+                    <p class="cert-date">Issued [Add Date]</p>
+                    <p class="cert-desc">20-day hands-on training session covering SEO, social media marketing, content strategy, and analytics. Practical experience in running digital campaigns and using marketing tools.</p>
+                    <p class="cert-id">[Add Credential ID if available]</p>
                     <a href="#" class="btn secondary small">Show Credential</a>
                 </div>
             </div>
@@ -395,10 +468,24 @@
                         <p>Open to remote & onsite opportunities</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.linkedin.com/in/zahid-ullah-web" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/in/zahid-ullah-web" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section (simplified, only download button) -->
+    <section id="resume" class="section">
+        <div class="container">
+            <h2 class="section-title">My <span>Resume</span></h2>
+            <div class="resume-content">
+                <div class="resume-download">
+                    <a href="assets/resume.pdf" download class="btn primary btn-large">
+                        <i class="fas fa-download"></i> Download Resume (PDF)
+                    </a>
                 </div>
             </div>
         </div>
@@ -408,6 +495,11 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Zahid Ullah. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
             <a href="#home" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
         </div>
     </footer>
