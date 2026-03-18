@@ -438,15 +438,15 @@ section {
 .skill-level.css { width: 85%; }
 .skill-level.js { width: 85%; }
 .skill-level.python { width: 90%; }
-.skill-level.php { width: 75%; }
+.skill-level.php { width: 85%; }
 .skill-level.mysql { width: 90%; }
-.skill-level.react { width: 70%; }
+.skill-level.tailwind { width: 75%; }
 .skill-level.bootstrap { width: 60%; }
 .skill-level.api { width: 85%; }
 .skill-level.mvc { width: 85%; }
 .skill-level.data-analysis { width: 80%; }
 .skill-level.digital-marketing { width: 70%; }
-.skill-level.git { width: 80%; }
+.skill-level.git { width: 70%; }
 
 /* Projects Section */
 .projects-grid {
