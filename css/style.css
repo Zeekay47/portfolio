@@ -905,13 +905,13 @@ section {
 }
 
 /* Footer */
-/* Footer */
 footer {
-    background-color: var(--footer-bg);
-    color: #ffffff;
+    background-color: var(--navbar-bg);
+    color: var(--text-color);
     padding: 40px 0;
     text-align: center;
     position: relative;
+    backdrop-filter: blur(10px);
 }
 
 footer .container {
@@ -921,17 +921,24 @@ footer .container {
     gap: 20px;
 }
 
-footer p {
-    color: #ffffff;
+footer {
+    background-color: var(--navbar-bg);
+    color: var(--text-color);
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
 }
 
-.footer-links {
+footer .container {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 .footer-links a {
-    color: #ffffff;
+    color: var(--text-color);
     text-decoration: none;
     transition: var(--transition);
     font-weight: 500;
